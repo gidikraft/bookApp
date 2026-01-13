@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "launch-ios": "react-native run-ios --simulator \"iPhone 17 Pro\"",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@react-native/new-app-screen": "0.83.1",
     "react": "19.2.0",
     "react-native": "0.83.1",
-    "@react-native/new-app-screen": "0.83.1",
     "react-native-safe-area-context": "^5.5.2"
   },
   "devDependencies": {
@@ -30,10 +31,19 @@
     "@types/react": "^19.2.0",
     "@types/react-test-renderer": "^19.1.0",
     "eslint": "^8.19.0",
+    "husky": "^9.1.7",
     "jest": "^29.6.3",
+    "lint-staged": "^16.2.7",
     "prettier": "2.8.8",
     "react-test-renderer": "19.2.0",
     "typescript": "^5.8.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "node remove_console.js",
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "engines": {
     "node": ">=20"
