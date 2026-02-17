@@ -2,20 +2,14 @@ import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { SvgProps } from 'react-native-svg';
 
-import homeActive from 'assets/svg/home_tab.svg';
-import homeInactive from 'assets/svg/home_tab_inactive.svg';
-import userActive from 'assets/svg/user.svg';
-import userInctive from 'assets/svg/user_inactive.svg';
+// import homeActive from 'assets/svg/home_tab.svg';
 import phone from 'assets/svg/phone.svg';
 
 type IconFunction = React.FC<SvgProps>;
 
 export const ICONS = {
-	'home-active': homeActive,
-	'home-inactive': homeInactive,
+	// 'home-active': homeActive,
 	phone,
-	'user-active': userActive,
-	'user-inactive': userInctive,
 };
 
 export type IconName = keyof typeof ICONS;

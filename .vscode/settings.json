@@ -1,0 +1,15 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "always",
+  },
+  "eslint.validate": [
+    "typescript"
+  ],
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "on",
+  "workbench.colorTheme": "Default Dark+",
+  "editor.tabSize": 2,
+  "workbench.iconTheme": "material-icon-theme"
+}

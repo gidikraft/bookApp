@@ -1,7 +1,7 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { RootTabParamList } from './types';
+import { createBottomTabNavigator, TransitionSpecs } from '@react-navigation/bottom-tabs';
 import MyTabBar from 'components/layouts/BottomTab';
 import { DashboardScreen, ProfileScreen } from 'screens/main';
+import { RootTabParamList } from './types';
 
 /**
  * Bottom Tab.
@@ -10,18 +10,30 @@ import { DashboardScreen, ProfileScreen } from 'screens/main';
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
+	const { Screen, Navigator } = BottomTab;
+
 	return (
-		<BottomTab.Navigator
+		<Navigator
 			initialRouteName='HomeScreen'
 			tabBar={(props) => <MyTabBar {...props} />}
 			screenOptions={{
 				tabBarLabelStyle: {
 					width: '100%',
-					fontSize: 12,
+					backgroundColor: 'white',
+					// fontSize: 12,
 				},
+				transitionSpec: TransitionSpecs.ShiftSpec,
+				sceneStyleInterpolator: ({ current }) => ({
+					sceneStyle: {
+						opacity: current.progress.interpolate({
+							inputRange: [-1, 0, 1],
+							outputRange: [0, 1, 0],
+						}),
+					},
+				}),
 			}}
 		>
-			<BottomTab.Screen
+			<Screen
 				name='HomeScreen'
 				component={DashboardScreen}
 				options={{
@@ -30,7 +42,7 @@ function BottomTabNavigator() {
 				}}
 			/>
 
-			<BottomTab.Screen
+			<Screen
 				name='ProfileScreen'
 				component={ProfileScreen}
 				options={{
@@ -38,7 +50,7 @@ function BottomTabNavigator() {
 					title: 'Settings',
 				}}
 			/>
-		</BottomTab.Navigator>
+		</Navigator>
 	);
 }
 

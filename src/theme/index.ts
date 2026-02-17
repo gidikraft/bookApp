@@ -25,7 +25,7 @@ export const palette = {
 	greenDark: '#0A906E',
 
 	black: '#0B0B0B',
-	white: '#F0F2F3',
+	white: '#ffffff',
 };
 
 const theme = createTheme({
@@ -136,6 +136,27 @@ const theme = createTheme({
 			fontWeight: '700',
 			lineHeight: 32,
 		},
+		italic12: {
+			color: 'textColor',
+			fontFamily: 'Poppins-Italic',
+			fontSize: 12,
+			fontWeight: '400',
+			lineHeight: 20,
+		},
+		italic14: {
+			color: 'textColor',
+			fontFamily: 'Poppins-Italic',
+			fontSize: 14,
+			fontWeight: '400',
+			lineHeight: 20,
+		},
+		italic16: {
+			color: 'textColor',
+			fontFamily: 'Poppins-Italic',
+			fontSize: 16,
+			fontWeight: '400',
+			lineHeight: 24,
+		},
 		light12: {
 			color: 'textColor',
 			fontFamily: 'Poppins-Light',
@@ -175,7 +196,7 @@ const theme = createTheme({
 			color: 'textColor',
 			fontFamily: 'Poppins-Medium',
 			fontSize: 14,
-			fontWeight: '600',
+			fontWeight: '500',
 			lineHeight: 20,
 		},
 		medium16: {

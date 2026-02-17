@@ -14,7 +14,7 @@ export type RootStackParamList = {
 	Root: NavigatorScreenParams<RootTabParamList> | undefined;
 	LoginScreen: undefined;
 	SignupScreen: undefined;
-	ForgotPasswordScreen: undefined;
+	AppModal: undefined;
 	// SubscriptionScreen: { eventItem: TEvent } | undefined;
 };
 

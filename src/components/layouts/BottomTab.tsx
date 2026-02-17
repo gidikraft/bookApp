@@ -1,7 +1,9 @@
-import { View } from 'react-native';
+import { PlatformPressable } from '@react-navigation/elements';
 import { useLinkBuilder, useTheme } from '@react-navigation/native';
-import { Text, PlatformPressable } from '@react-navigation/elements';
-import Icon from 'components/Icons';
+import Text from 'components/Text';
+import VIcons from 'components/VIcons';
+import { StyleSheet, View } from 'react-native';
+import theme from 'theme';
 import { hapticFeedback } from 'utils/hapticFeedback';
 
 const MyTabBar = ({ state, descriptors, navigation }) => {
@@ -9,7 +11,7 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
 	const { buildHref } = useLinkBuilder();
 
 	return (
-		<View style={{ flexDirection: 'row', backgroundColor: colors.card, paddingVertical: 12 }}>
+		<View style={styles.tabBar}>
 			{state.routes.map((route, index) => {
 				const { options } = descriptors[route.key];
 				const label =
@@ -41,17 +43,13 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
 					});
 				};
 
-				const getIconName = (focused: boolean) => {
-					if (route.name === 'HomeScreen' && focused) {
-						return 'home-active';
-					} else if (route.name === 'HomeScreen' && !focused) {
-						return 'home-inactive';
-					} else if (route.name === 'ProfileScreen' && focused) {
-						return 'user-active';
-					} else if (route.name === 'ProfileScreen' && !focused) {
-						return 'user-inactive';
+				const getIconName = () => {
+					if (route.name === 'HomeScreen') {
+						return 'home';
+					} else if (route.name === 'ProfileScreen') {
+						return 'tools';
 					}
-					return 'phone';
+					return 'archive';
 				};
 
 				return (
@@ -63,10 +61,16 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
 						testID={options.tabBarButtonTestID}
 						onPress={onPress}
 						onLongPress={onLongPress}
-						style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+						style={styles.tabButton}
 					>
-						<Icon name={getIconName(isFocused)} size={16} />
-						<Text style={{ color: isFocused ? colors.primary : colors.text }}>{label}</Text>
+						<VIcons
+							name={getIconName()}
+							size={'medium'}
+							color={isFocused ? colors.primary : colors.text}
+						/>
+						<Text variant='medium12' style={{ color: isFocused ? colors.primary : colors.text }}>
+							{label}
+						</Text>
 					</PlatformPressable>
 				);
 			})}
@@ -75,3 +79,18 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
 };
 
 export default MyTabBar;
+
+const styles = StyleSheet.create({
+	tabBar: {
+		flexDirection: 'row',
+		backgroundColor: theme.colors.white,
+		paddingVertical: 12,
+		// marginHorizontal: 24,
+		// borderRadius: 24
+	},
+	tabButton: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+});
