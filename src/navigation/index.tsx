@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Text from 'components/Text';
+import { useAppSelector } from 'hooks/redux';
 import React from 'react';
 import { LoginScreen } from 'screens/auth';
 import { InfoScreen } from 'screens/modals';
@@ -12,12 +13,16 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigation = () => {
 	const { Navigator, Screen, Group } = RootStack;
+	const { isAuthenticated } = useAppSelector((state) => state.auth);
 
 	return (
 		<NavigationContainer ref={navigationRef}>
 			<Navigator screenOptions={{ headerShown: false }}>
-				<Screen name='Root' component={BottomTabNavigator} />
-				<Screen name='LoginScreen' component={LoginScreen} />
+				{!isAuthenticated ? (
+					<Screen name='LoginScreen' component={LoginScreen} />
+				) : (
+					<Screen name='Root' component={BottomTabNavigator} />
+				)}
 				<Group
 					navigationKey='Modal'
 					screenOptions={{
@@ -28,7 +33,7 @@ const RootNavigation = () => {
 				</Group>
 			</Navigator>
 
-			<Text variant='italic14' color='black' textAlign='center' marginTop='xs'>
+			<Text variant='italic12' color='black' textAlign='center' marginTop='xs'>
 				Made with ❤️ by Seun Fagade
 			</Text>
 		</NavigationContainer>

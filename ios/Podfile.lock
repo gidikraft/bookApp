@@ -2038,7 +2038,6 @@ PODS:
     - SocketRocket
     - Yoga
   - react-native-vector-icons-entypo (12.4.0)
-  - react-native-vector-icons-fontawesome5 (12.3.0)
   - React-NativeModulesApple (0.83.1):
     - boost
     - DoubleConversion
@@ -3001,7 +3000,6 @@ DEPENDENCIES:
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-vector-icons-entypo (from `../node_modules/@react-native-vector-icons/entypo`)"
-  - "react-native-vector-icons-fontawesome5 (from `../node_modules/@react-native-vector-icons/fontawesome5`)"
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-networking (from `../node_modules/react-native/ReactCommon/react/networking`)
   - React-oscompat (from `../node_modules/react-native/ReactCommon/oscompat`)
@@ -3144,8 +3142,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-vector-icons-entypo:
     :path: "../node_modules/@react-native-vector-icons/entypo"
-  react-native-vector-icons-fontawesome5:
-    :path: "../node_modules/@react-native-vector-icons/fontawesome5"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-networking:
@@ -3275,7 +3271,6 @@ SPEC CHECKSUMS:
   react-native-netinfo: a0be8c77f8420a60ddf07eb87be1a36f02a1bd65
   react-native-safe-area-context: c00143b4823773bba23f2f19f85663ae89ceb460
   react-native-vector-icons-entypo: feb9d28fa1769fd6b1913649f4a56f50510ee9a1
-  react-native-vector-icons-fontawesome5: 271d813e27a86d30bb8cf1fc2f12dae74b74b69b
   React-NativeModulesApple: a2c3d2cbec893956a5b3e4060322db2984fff75b
   React-networking: 3f98bd96893a294376e7e03730947a08d474c380
   React-oscompat: 80166b66da22e7af7fad94474e9997bd52d4c8c6

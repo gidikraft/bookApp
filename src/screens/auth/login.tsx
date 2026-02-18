@@ -1,22 +1,28 @@
-import { Box, PrimaryInput, Text } from 'components';
+import { Box, PrimaryButton, PrimaryInput, Text } from 'components';
 import { PageWrapper } from 'components/layouts';
+import { useAppDispatch } from 'hooks/redux';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { login } from 'store/reducers/authSlice';
 
 const Login = () => {
+	const dispatch = useAppDispatch();
+
 	const {
 		control,
 		formState: { errors },
-		// handleSubmit,
+		handleSubmit,
 	} = useForm({
 		defaultValues: {
 			email: '',
 			password: '',
-			// firstname: "",
-			// lastname: "",
 		},
 	});
+
+	const loginHandler = () => {
+		dispatch(login());
+	};
 
 	return (
 		<PageWrapper mode='view'>
@@ -80,6 +86,8 @@ const Login = () => {
 							errorMessage={errors.password?.message}
 						/>
 					</Box>
+
+					<PrimaryButton label='Submit' onPress={handleSubmit(loginHandler)} />
 				</KeyboardAwareScrollView>
 			</Box>
 		</PageWrapper>

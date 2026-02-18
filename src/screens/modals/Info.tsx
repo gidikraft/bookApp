@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native';
+import { PageWrapper } from 'components/layouts';
 import React from 'react';
+import { Text } from 'react-native';
 
 const Info = () => {
 	return (
-		<View>
+		<PageWrapper mode='view'>
 			<Text>Info</Text>
-		</View>
+		</PageWrapper>
 	);
 };
 
