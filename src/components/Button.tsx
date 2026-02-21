@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator } from 'react-native';
+import Box, { BoxProps } from './Box';
 import Pressable from './Pressable';
+import Text from './Text';
 
 type Props = {
 	onPress: () => void;
@@ -10,7 +12,7 @@ type Props = {
 	loadingText?: string;
 	icon?: ReactNode;
 	animate?: 'no-feedback' | 'opacity' | 'scale';
-} & React.ComponentProps<typeof View>;
+} & BoxProps;
 
 const Button = ({
 	onPress,
@@ -21,59 +23,37 @@ const Button = ({
 	icon,
 	animate = 'opacity',
 }: Props) => {
-	const stateStyle = isLoading ? styles.loading : styles.normal;
-
 	return (
 		<Pressable
 			onPress={onPress}
 			disabled={isLoading || isDisabled}
 			type={isLoading || isDisabled ? 'no-feedback' : animate}
 		>
-			<View style={[styles.wrapper, stateStyle, isDisabled && styles.disabled]}>
+			<Box
+				alignItems='center'
+				borderRadius={8}
+				flexDirection='row'
+				justifyContent='center'
+				width='100%'
+				height={45}
+				backgroundColor={isLoading && isDisabled ? 'disabled' : 'buttonPry'}
+				opacity={isLoading || isDisabled ? 0.6 : 1}
+			>
 				{icon}
 				<Text
-					style={[styles.text, isLoading && styles.loading]}
+					color={isLoading || isDisabled ? 'black' : 'white'}
+					variant='button'
+					textAlign='center'
+					style={{ marginLeft: icon ? 8 : 0 }}
 					minimumFontScale={1}
 					maxFontSizeMultiplier={1}
 				>
 					{isLoading && loadingText ? loadingText : label}
 				</Text>
 				{isLoading && <ActivityIndicator color={'#000'} />}
-			</View>
+			</Box>
 		</Pressable>
 	);
 };
 
 export default Button;
-
-const styles = StyleSheet.create({
-	loading: {
-		marginRight: 10,
-		opacity: 0.6,
-		backgroundColor: '#001D6E',
-	},
-	normal: {
-		opacity: 1,
-		backgroundColor: '#D1AE6C',
-	},
-	disabled: {
-		opacity: 0.6,
-		backgroundColor: '#001D6E',
-	},
-	text: {
-		color: '#000',
-		fontFamily: 'Roboto_700Bold',
-		fontSize: 14,
-		textAlign: 'center',
-	},
-	wrapper: {
-		alignItems: 'center',
-		borderRadius: 8,
-		flexDirection: 'row',
-		justifyContent: 'center',
-		width: '100%',
-		height: 45,
-	},
-});
-
-export const buttonStyles = styles;

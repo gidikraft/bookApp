@@ -1,7 +1,7 @@
-import { Box, PrimaryButton, PrimaryInput, Text } from 'components';
+import { Box, Pressable, PrimaryButton, PrimaryInput, Text } from 'components';
 import { PageWrapper } from 'components/layouts';
 import { useAppDispatch } from 'hooks/redux';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { login } from 'store/reducers/authSlice';
@@ -20,19 +20,19 @@ const Login = () => {
 		},
 	});
 
-	const loginHandler = () => {
+	const loginHandler = useCallback(() => {
 		dispatch(login());
-	};
+	}, []);
 
 	return (
 		<PageWrapper mode='view'>
-			<Box flex={1}>
-				<KeyboardAwareScrollView
-					showsVerticalScrollIndicator={false}
-					contentContainerStyle={{ flexGrow: 1 }}
-					keyboardDismissMode='interactive'
-					enableOnAndroid
-				>
+			<KeyboardAwareScrollView
+				showsVerticalScrollIndicator={false}
+				contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between', paddingBottom: 20 }}
+				keyboardDismissMode='interactive'
+				enableOnAndroid
+			>
+				<Box flex={1}>
 					<Text variant='bold24' mt='xxl'>
 						Login
 					</Text>
@@ -87,9 +87,15 @@ const Login = () => {
 						/>
 					</Box>
 
-					<PrimaryButton label='Submit' onPress={handleSubmit(loginHandler)} />
-				</KeyboardAwareScrollView>
-			</Box>
+					<Box mt='sm' alignItems='flex-end'>
+						<Pressable type='opacity'>
+							<Text variant='regular14'>Forgot password?</Text>
+						</Pressable>
+					</Box>
+				</Box>
+
+				<PrimaryButton label='Submit' onPress={handleSubmit(loginHandler)} />
+			</KeyboardAwareScrollView>
 		</PageWrapper>
 	);
 };

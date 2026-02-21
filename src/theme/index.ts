@@ -3,18 +3,16 @@ import { wp } from './layout';
 
 export const palette = {
 	background: '#f0f9fc',
-	// black: "#101818",
-	blackTint: '#696977',
 	blue: '#3878B8',
 	border: '#D0D0D0',
 	error: '#e22525',
 	grey: '#C1C7CF',
-	primary: '#3A595D',
-	secondary: '#878681',
+	primary: '#0444bb',
+	primary10: '#4f72b3',
+	secondary: '#30d10f',
+	secondary10: '#45bd2d',
 	success: '#97E225',
-	textInputBackground: '#EFEFEF',
 	transparent: 'transparent',
-	// white: "#FBFBFB",
 
 	purpleLight: '#8C6FF7',
 	purplePrimary: '#5A31F4',
@@ -42,13 +40,12 @@ const theme = createTheme({
 		...palette,
 		blockBg: palette.grey,
 		buttonPry: palette.primary,
-		buttonPrimaryBackground: palette.purplePrimary,
+		disabled: palette.primary10,
 		mainBackground: palette.white,
 		mainForeground: palette.blue,
 		secondaryCardBackground: palette.secondary,
 		secondaryCardText: palette.white,
 		textColor: palette.black,
-		textColorTint: palette.blackTint,
 	},
 	spacing: {
 		Ml: wp(60), // mega large
@@ -82,7 +79,7 @@ const theme = createTheme({
 		button: {
 			color: 'textColor',
 			fontFamily: 'Poppins-Medium',
-			fontSize: 16,
+			fontSize: 14,
 			fontWeight: '600',
 			lineHeight: 22,
 		},

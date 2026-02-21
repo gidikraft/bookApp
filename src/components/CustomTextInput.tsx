@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Control, Controller } from 'react-hook-form';
 import {
 	KeyboardTypeOptions,
-	Platform,
 	TextInput as RTextInput,
 	StyleSheet,
 	TextInputProps,
@@ -244,7 +243,6 @@ const styles = (editable: boolean) => {
 			color: editable ? 'inherit' : theme.colors.blockBg,
 			fontFamily: 'Poppins-Regular',
 			fontSize: 14,
-			height: Platform.OS === 'android' ? 49 : 44,
 			paddingHorizontal: 12,
 			flex: 1,
 			borderRadius: 8,
@@ -255,7 +253,6 @@ const styles = (editable: boolean) => {
 			alignItems: 'center',
 			height: 45,
 			borderRadius: 8,
-			marginTop: 8,
 		},
 	});
 };
